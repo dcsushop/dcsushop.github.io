@@ -4,7 +4,7 @@
       <ion-item class="item-divider" id="ordersPage-list-item-divider3"> Filters</ion-item>
       <label class="item item-select" id="ordersPage-select1">
         <span class="input-label">Site</span>
-        <select ng-model="siteFilter2">
+        <select ng-model="siteFilter">
           <option></option>
           <option>Joseph Wright Center</option>
           <option>Roundhouse (inc. JB &amp; HB)</option>
@@ -14,16 +14,18 @@
       </label>
       <label class="item item-select" id="ordersPage-select2">
         <span class="input-label">Status</span>
-        <select ng-model="statusFilter">
+        <select ng-model="statusFilter" ng-change="resetFilters()">
           <option></option>
           <option>Completed</option>
           <option>On-Hold</option>
           <option>Processing</option>
-          <option>!Completed</option>
         </select>
       </label>
+    </ion-list>
+    <button id="ordersPage-button11" ng-click="setFilter()" class="button button-light button-block">Outstanding Orders Only!</button>
+    <ion-list id="ordersPage-list5">
       <ion-item class="item-divider" id="ordersPage-list-item-divider4"> Orders</ion-item>
-      <ion-item id="ordersPage-list-item1" ui-sref="orderPage({&quot;id&quot;:&quot;&quot;+item.id+&quot;&quot;})" ng-repeat="item in data | toArray:true | filter:{status:statusFilter} | filter:{$:siteFilter2} | orderBy:[]:true">{{item.number}} -
+      <ion-item id="ordersPage-list-item1" ui-sref="orderPage({&quot;id&quot;:&quot;&quot;+item.id+&quot;&quot;})" ng-repeat="item in data | toArray:true | filter:{status:statusFilter} | filter:{status:statusFilter2} | filter:{$:siteFilter} | orderBy:[]:true">{{item.number}} -
         <small>{{item.billing.first_name}} {{item.billing.last_name}}</small>
         <span class="item-note">{{item.status}}</span>
       </ion-item>

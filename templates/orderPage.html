@@ -12,9 +12,10 @@
         </p>
       </ion-item>
       <ion-item class="item-divider" id="orderPage-list-item-divider1"> Items Ordered</ion-item>
-      <ion-item id="orderPage-list-item7" ng-repeat="item in data.line_items">{{item.name}}
+      <ion-item class="item-icon-right" id="orderPage-list-item7" ng-repeat="item in data.line_items track by $index" ng-click="markGot($index, item.got)">{{item.name}}
         <small>x {{item.quantity}}</small>
         <span class="item-note">£{{item.total}}</span>
+        <i class="icon ion-checkmark" ng-show="item.got"></i>
       </ion-item>
       <ion-item class="item-divider" id="orderPage-list-item-divider2"> Order Details</ion-item>
       <ion-item id="orderPage-list-item11" ng-repeat="coupon in data.coupon_lines">{{coupon.code}}

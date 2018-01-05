@@ -15,7 +15,18 @@ function (dataService, $scope, $stateParams) {
     });
     
     $scope.siteFilter = '';
-    $scope.statusFilter = '';
+    $scope.statusFilter = '!completed';
+    $scope.statusFilter2 = '!cancelled';
+    
+    $scope.setFilter = function(){
+        //$scope.siteFilter = '';
+        $scope.statusFilter = '!completed';
+        $scope.statusFilter2 = '!cancelled';
+    };
+    
+    $scope.resetFilters = function(){
+        $scope.statusFilter2 = '';
+    };
     
     $scope.logout = function(){
         firebase.auth().signOut();
@@ -32,6 +43,15 @@ function (dataService, $scope, $stateParams, Gravatar) {
     // console.log($stateParams.id);
     // console.log(dataService.data[$stateParams.id].id);
     $scope.gravImg = Gravatar.get($scope.data.billing.email, 100);
+    $scope.markGot = function(id, got){
+        //alert(id)
+        $scope.data.line_items[id].got = !$scope.data.line_items[id].got;
+        
+        var updates = [];
+       
+        return firebase.database().ref('/newOrders/'+$stateParams.id+'/line_items/'+id).set($scope.data.line_items[id]);
+       // 
+    }
 //     var d = $scope.data.line_items;
 //     d = "{" + d + "}";
 //     d = d.replace(/\n\n/g,"},{");
