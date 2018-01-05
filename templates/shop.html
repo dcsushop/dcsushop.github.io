@@ -1,0 +1,8 @@
+<ion-view title="Shop" id="page5">
+  <ion-content padding="true" class="has-header">
+    <h1 id="shop-heading1" style="color:#000000;">Heading</h1>
+    <ion-list id="shop-list2">
+      <ion-item id="shop-list-item8" ui-sref="productSections({&quot;category&quot;:&quot;&quot;+category.key+&quot;&quot;})" ng-repeat="category in shop.categories track by $index">{{category.name}}</ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

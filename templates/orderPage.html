@@ -1,0 +1,34 @@
+<ion-view title="Order Page" hide-nav-bar="true" id="page3">
+  <ion-content padding="true" class="manual-ios-statusbar-padding">
+    <div class="list card" id="orderPage-card21">
+      <ion-item class="item-thumbnail-left" id="orderPage-list-item4">
+        <img src="{{gravImg}}">
+        <h2>Order #{{data.number}}</h2>
+        <p>
+          <small>{{data.shipping.first_name}} {{data.shipping.last_name}}
+            <small>
+              <br>Deliver to: {{data.fee_lines[0].meta_data[2].value}}</small>
+          </small>
+        </p>
+      </ion-item>
+      <ion-item class="item-divider" id="orderPage-list-item-divider1"> Items Ordered</ion-item>
+      <ion-item id="orderPage-list-item7" ng-repeat="item in data.line_items">{{item.name}}
+        <small>x {{item.quantity}}</small>
+        <span class="item-note">£{{item.total}}</span>
+      </ion-item>
+      <ion-item class="item-divider" id="orderPage-list-item-divider2"> Order Details</ion-item>
+      <ion-item id="orderPage-list-item11" ng-repeat="coupon in data.coupon_lines">{{coupon.code}}
+        <span class="item-note">£{{coupon.discount}}</span>
+      </ion-item>
+      <div class="item item-body" id="orderPage-list-item-container2">
+        <div id="orderPage-markdown3" class="show-list-numbers-and-dots">
+          <p style="margin-top:0px;color:#000000;">Discounted Amount: £{{data.discount_total}}</p>
+
+          <p style="color:#000000;">Total: £{{data.total}}</p>
+        </div>
+      </div>
+    </div>
+    <button id="orderPage-button3" href="http://shop.dcsu.co.uk/wp-admin/post.php?post={{data.id}}&amp;action=edit" target="_blank" class="button button-positive button-block icon-right ion-android-open"> Open on SU Shop Site</button>
+    <a ui-sref="ordersPage()" id="orderPage-button2" class="button button-positive button-block icon ion-ios-arrow-thin-left"> Back</a>
+  </ion-content>
+</ion-view>
