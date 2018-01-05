@@ -31,7 +31,7 @@ function (dataService, $scope, $stateParams, Gravatar) {
     $scope.data = dataService.data[$stateParams.id];
     // console.log($stateParams.id);
     // console.log(dataService.data[$stateParams.id].id);
-    $scope.gravImg = Gravatar.get($scope.data.billing__email, 100);
+    $scope.gravImg = Gravatar.get($scope.data.billing.email, 100);
 //     var d = $scope.data.line_items;
 //     d = "{" + d + "}";
 //     d = d.replace(/\n\n/g,"},{");
